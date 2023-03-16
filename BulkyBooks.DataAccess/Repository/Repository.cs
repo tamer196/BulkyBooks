@@ -20,16 +20,31 @@ namespace BulkyBooks.DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll()
+        //includeProp - Insert the Proprites in the correct syntax {Category,CoverType}
+        public IEnumerable<T> GetAll(string? includeProperites = null)
         {
             IQueryable<T> query = dbSet;
+            if (includeProperites != null)
+            {
+                foreach (var includeProperite in includeProperites.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query= query.Include(includeProperite);
+                }
+            }
             return query.ToList();
         }
 
-        public T GetFirstOrDefailt(Expression<Func<T, bool>> filter)
+        public T GetFirstOrDefailt(Expression<Func<T, bool>> filter, string? includeProperites = null)
         {
             IQueryable<T> query = dbSet;
             query = query.Where(filter);
+            if (includeProperites != null)
+            {
+                foreach (var includeProperite in includeProperites.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperite);
+                }
+            }
             return query.FirstOrDefault();
         }
 

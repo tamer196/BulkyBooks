@@ -9,9 +9,9 @@ namespace BulkyBooks.DataAccess.Repository.IRepository
 
         //T - Category
 
-        T GetFirstOrDefailt(Expression<Func<T, bool>> filter);
+        T GetFirstOrDefailt(Expression<Func<T, bool>> filter, string? includeProperites = null);
 
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(string? includeProperites = null);
 
         void Add(T entity);
 
