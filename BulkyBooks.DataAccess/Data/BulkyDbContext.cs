@@ -1,9 +1,10 @@
 ﻿using BulkyBooks.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace BulkyBooks.DataAccess
 {
-    public class BulkyDbContext : DbContext
+    public class BulkyDbContext : IdentityDbContext
     {
 
         public BulkyDbContext(DbContextOptions<BulkyDbContext> options) : base(options)

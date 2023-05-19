@@ -381,7 +381,9 @@ select {
     select:disabled {
         opacity: 1;
     }
-
+div.col-lg-3{
+    flex-basis: 1;
+}
 [list]:not([type=date]):not([type=datetime-local]):not([type=month]):not([type=week]):not([type=time])::-webkit-calendar-picker-indicator {
     display: none !important;
 }
@@ -4634,6 +4636,7 @@ textarea.form-control-lg {
     background-color: var(--bs-card-bg);
     background-clip: border-box;
     border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    height: 600px;
 }
 
     .card > hr {
